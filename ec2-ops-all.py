@@ -40,8 +40,16 @@ for each_ins_cli  in ec2_dashboard_client.describe_instances(Filters = [f1])['Re
     for each_in in each_ins_cli['Instances']:
         test_server.append(each_in['InstanceId'])
 print(test_server)
-print("Starting instances with ids of ",test_server )
-ec2_dashboard_client.start_instances(InstanceIds = test_server)
-waiter = ec2_dashboard_client.get_waiter('instance_running')
+#<<<<<<Starting test Server
+# print("Starting instances with ids of ",test_server )
+# ec2_dashboard_client.start_instances(InstanceIds = test_server)
+# waiter = ec2_dashboard_client.get_waiter('instance_running')
+# waiter.wait(InstanceIds = test_server )
+# print("Test server has been started")
+
+#<<<<Stopping test server>>>
+print("Stopped instances with ids of ",test_server )
+ec2_dashboard_client.stop_instances(InstanceIds = test_server)
+waiter = ec2_dashboard_client.get_waiter('instance_stopped')
 waiter.wait(InstanceIds = test_server )
-print("Test server has been started")
+print("Test server has been stopped")
