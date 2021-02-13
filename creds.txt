@@ -1,2 +1,0 @@
-UserName: test_user
-Password: ccu@yBlJu5lJ$HuA
